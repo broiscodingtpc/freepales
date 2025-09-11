@@ -6,20 +6,10 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    minify: 'terser',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom']
-        }
-      }
-    }
+    minify: 'terser'
   },
   server: {
     port: 3000,
     open: true
-  },
-  esbuild: {
-    target: 'es2015'
   }
 })
