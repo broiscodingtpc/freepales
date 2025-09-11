@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./index.css";
 
 // FREE PALESTINE — Professional one‑page site (single file)
@@ -314,14 +314,33 @@ function Nav() {
 
 function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
   const [isMuted, setIsMuted] = useState(true);
-  const [videoRef, setVideoRef] = useState(null);
+  const videoRef = useRef(null);
 
   const toggleMute = () => {
-    if (videoRef) {
-      videoRef.muted = !videoRef.muted;
-      setIsMuted(videoRef.muted);
+    if (videoRef.current) {
+      console.log('Before toggle - muted:', videoRef.current.muted);
+      videoRef.current.muted = !videoRef.current.muted;
+      console.log('After toggle - muted:', videoRef.current.muted);
+      setIsMuted(videoRef.current.muted);
+    } else {
+      console.log('Video ref not found');
     }
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const handleVolumeChange = () => {
+        setIsMuted(video.muted);
+      };
+      
+      video.addEventListener('volumechange', handleVolumeChange);
+      
+      return () => {
+        video.removeEventListener('volumechange', handleVolumeChange);
+      };
+    }
+  }, []);
 
   return (
     <section id="top" className="relative isolate pt-32 pb-20 overflow-hidden">
@@ -354,7 +373,7 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
             <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
             <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500">
               <video
-                ref={setVideoRef}
+                ref={videoRef}
                 className="w-full h-auto max-h-[500px] object-cover"
                 autoPlay
                 muted={isMuted}
