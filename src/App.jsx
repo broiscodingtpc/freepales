@@ -362,59 +362,6 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
       </div>
       
       <div className="mx-auto max-w-7xl px-4">
-        {/* Video Section - Fawzi controlling the crowd */}
-        <div className="mb-16">
-          <div className="relative group">
-            <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500">
-              <video
-                ref={videoRef}
-                className="w-full h-auto max-h-[600px] object-cover"
-                autoPlay
-                muted={isVideoMuted}
-                loop
-                playsInline
-                controls
-                onClick={handleVideoClick}
-                style={{ aspectRatio: '9/16' }}
-              >
-                <source 
-                  src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeicpfncy75ngjgk3obz67kjubanepb4lailx2ovjh5p2e4ftvfnxiy" 
-                  type="video/mp4" 
-                />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Sound Status Overlay */}
-              <div className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white px-4 py-2 rounded-full transition-all duration-300 backdrop-blur-sm">
-                <div className="flex items-center gap-2">
-                  {isVideoMuted ? (
-                    <>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                      </svg>
-                      <span className="text-sm">Click anywhere to unmute</span>
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                      </svg>
-                      <span className="text-sm">🔊 Sound enabled</span>
-                    </>
-                  )}
-                </div>
-              </div>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="text-lg font-bold">Fawzi Issa Zaid - The People United Will Never Be Defeated</div>
-                <div className="text-sm text-neutral-300">Palestinian Activist Leading the Movement</div>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
@@ -456,15 +403,50 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
               <div className="relative">
-                <img
-                  src={activist.headshot}
-                  alt="Fawzi Issa Zaid"
-                  className="w-80 h-80 object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
-                />
+                <video
+                  ref={videoRef}
+                  className="w-80 h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
+                  autoPlay
+                  muted={isVideoMuted}
+                  loop
+                  playsInline
+                  controls
+                  onClick={handleVideoClick}
+                  style={{ aspectRatio: '9/16' }}
+                >
+                  <source 
+                    src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeicpfncy75ngjgk3obz67kjubanepb4lailx2ovjh5p2e4ftvfnxiy" 
+                    type="video/mp4" 
+                  />
+                  Your browser does not support the video tag.
+                </video>
+                
+                {/* Sound Status Overlay */}
+                <div className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white px-3 py-2 rounded-full transition-all duration-300 backdrop-blur-sm">
+                  <div className="flex items-center gap-2">
+                    {isVideoMuted ? (
+                      <>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                        </svg>
+                        <span className="text-xs">Click to unmute</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        </svg>
+                        <span className="text-xs">🔊</span>
+                      </>
+                    )}
+                  </div>
+                </div>
+                
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="text-lg font-bold">Fawzi Issa Zaid</div>
-                  <div className="text-sm text-neutral-300">Palestinian Activist</div>
+                  <div className="text-sm text-neutral-300">The People United Will Never Be Defeated</div>
                 </div>
               </div>
             </div>
