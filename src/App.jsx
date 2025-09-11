@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./index.css";
 
 // FREE PALESTINE — Professional one‑page site (single file)
@@ -313,30 +313,6 @@ function Nav() {
 }
 
 function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
-  const [isMuted, setIsMuted] = useState(true);
-  const videoRef = useRef(null);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsMuted(videoRef.current.muted);
-    }
-  };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      const handleVolumeChange = () => {
-        setIsMuted(video.muted);
-      };
-      
-      video.addEventListener('volumechange', handleVolumeChange);
-      
-      return () => {
-        video.removeEventListener('volumechange', handleVolumeChange);
-      };
-    }
-  }, []);
 
   return (
     <section id="top" className="relative isolate pt-32 pb-20 overflow-hidden">
@@ -368,47 +344,12 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
           <div className="relative group">
             <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
             <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500">
-              <video
-                ref={videoRef}
-                className="w-full h-auto max-h-[500px] object-cover"
-                autoPlay
-                muted={isMuted}
-                loop
-                playsInline
-                controls
-                poster={activist.headshot}
-              >
-                <source 
-                  src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeiczd77pv3hlof2naf4rpeujos5zl4xja4mkmb3rw5ly5kmksmiukq" 
-                  type="video/mp4" 
-                />
-                Your browser does not support the video tag.
-              </video>
-              
-              {/* Sound Toggle Button */}
-              <button
-                onClick={toggleMute}
-                className="absolute top-4 right-4 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full transition-all duration-300 backdrop-blur-sm"
-                aria-label={isMuted ? "Unmute video" : "Mute video"}
-              >
-                {isMuted ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                  </svg>
-                )}
-              </button>
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="text-lg font-bold">Fawzi Issa Zaid - The People United Will Never Be Defeated</div>
-                <div className="text-sm text-neutral-300">Palestinian Activist Leading the Movement</div>
-                <div className="text-xs text-emerald-300 mt-1">
-                  {isMuted ? "Click 🔊 to unmute" : "🔊 Sound enabled"}
+              <div className="w-full h-[500px] bg-gradient-to-br from-neutral-900 to-neutral-800 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="text-6xl mb-4">🎥</div>
+                  <div className="text-2xl font-bold text-white mb-2">Fawzi Issa Zaid</div>
+                  <div className="text-lg text-emerald-300 mb-4">The People United Will Never Be Defeated</div>
+                  <div className="text-sm text-neutral-400">Video coming soon...</div>
                 </div>
               </div>
             </div>
