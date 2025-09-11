@@ -318,12 +318,8 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
 
   const toggleMute = () => {
     if (videoRef.current) {
-      console.log('Before toggle - muted:', videoRef.current.muted);
       videoRef.current.muted = !videoRef.current.muted;
-      console.log('After toggle - muted:', videoRef.current.muted);
       setIsMuted(videoRef.current.muted);
-    } else {
-      console.log('Video ref not found');
     }
   };
 
