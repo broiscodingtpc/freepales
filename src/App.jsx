@@ -10,10 +10,6 @@ import "./index.css";
 // - Includes About Fawzi section, Press & Coverage, and Dev Smoke Tests
 
 export default function FreePalestineSite() {
-  // ==== Video state ====
-  const [isVideoMuted, setIsVideoMuted] = useState(true);
-  const videoRef = useRef(null);
-
   // ==== Donation wallet (SOL only) ====
   const DONATION_WALLETS = [
     { chain: "SOL", address: "FTqhceb9mZ94GZg89idm81ZBV4q4TURCfXSL366Edn2K" },
@@ -90,26 +86,6 @@ export default function FreePalestineSite() {
     }
   };
 
-  // ==== Video click handler ====
-  const handleVideoClick = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !videoRef.current.muted;
-      setIsVideoMuted(videoRef.current.muted);
-    }
-  };
-
-  // ==== Global click handler for video unmute ====
-  useEffect(() => {
-    const handleGlobalClick = () => {
-      if (videoRef.current && isVideoMuted) {
-        videoRef.current.muted = false;
-        setIsVideoMuted(false);
-      }
-    };
-
-    document.addEventListener('click', handleGlobalClick);
-    return () => document.removeEventListener('click', handleGlobalClick);
-  }, [isVideoMuted]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 text-white overflow-x-hidden">
@@ -338,6 +314,28 @@ function Nav() {
 }
 
 function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  const handleVideoClick = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsVideoMuted(videoRef.current.muted);
+    }
+  };
+
+  // ==== Global click handler for video unmute ====
+  useEffect(() => {
+    const handleGlobalClick = () => {
+      if (videoRef.current && isVideoMuted) {
+        videoRef.current.muted = false;
+        setIsVideoMuted(false);
+      }
+    };
+
+    document.addEventListener('click', handleGlobalClick);
+    return () => document.removeEventListener('click', handleGlobalClick);
+  }, [isVideoMuted]);
 
   return (
     <section id="top" className="relative isolate pt-32 pb-20 overflow-hidden">
