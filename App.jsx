@@ -175,29 +175,18 @@ export default function FreePalestineSite() {
       {/* Enhanced About Fawzi */}
       <Section id="about" title="About Fawzi Issa Zaid">
         <div className="grid md:grid-cols-3 gap-12 items-start">
-          {/* Replace headshot with controlled video (no auto-unmute) */}
-          <div className="relative group flex justify-center">
-            <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 pointer-events-none" />
-            <div className="relative">
-              <video
-                src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeid4h5oldqjd2ys3zl35bldkqkl3dkkp5hhih2ggqbnzbbexnahia4"
-                className="w-80 h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
-                poster={activist.headshot}
-                controls
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                style={{ aspectRatio: '9/16' }}
-              >
-                Your browser does not support the video tag.
-              </video>
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-            </div>
-            {/* Hover caption below video */}
-            <div className="mt-3 text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="text-sm font-semibold">Fawzi Issa Zaid</div>
-              <div className="text-xs text-neutral-300">Palestinian Activist</div>
+          <div className="group">
+            <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+              <img
+                src={activist.headshot}
+                alt="Portrait of Fawzi Issa Zaid"
+                className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="text-sm font-medium">Palestinian Activist</div>
+                <div className="text-xs text-neutral-300">Ontario, Canada</div>
+              </div>
             </div>
           </div>
           <div className="md:col-span-2 space-y-6">
@@ -214,15 +203,7 @@ export default function FreePalestineSite() {
                 </span>
               </div>
             </div>
-            {/* Detailed mission text provided by user */}
-            <div className="bg-gradient-to-r from-emerald-900/20 to-neutral-900/50 backdrop-blur-sm rounded-2xl border border-emerald-500/30 p-6 space-y-4 text-neutral-200 leading-relaxed text-lg">
-              <p>My name is Fawzi Issa Zaid. I am one of the founders of Windsor 4 Palestine, and today I’m proud to introduce a new initiative: People for Palestine</p>
-              <p>This movement was created with one goal to connect you directly to the people of Palestine. Not just through words or headlines, but through real action, real stories, and real lives.</p>
-              <p>Through People for Palestine, we are raising donations that go directly to Palestinian families suffering under genocide both those still in Gaza and those who have fled with nothing left. These are families who have lost everything and are now starting from zero in unfamiliar countries, without resources or support. We are here to change that.</p>
-              <p>Every dollar donated will be documented. Every act of giving will be videotaped and shared so you know where your support is going, who it’s helping, and how it’s changing lives. This isn’t charity from a distance it’s solidarity, face-to-face.</p>
-              <p>We are working hand in hand with people on the ground. Your support will provide food, shelter, medicine, and essentials for survival. It will also give dignity to those rebuilding their lives in exile.</p>
-              <p className="font-semibold text-emerald-300">This is not just a movement. It's a lifeline. From people, to people of Palestine.</p>
-            </div>
+            <p className="text-neutral-200 leading-relaxed text-lg">{activist.summary}</p>
             <div className="grid sm:grid-cols-2 gap-4">
               <a href={X_OWNER} target="_blank" rel="noreferrer" className={BTN_SUBTLE}>
                 Follow Fawzi on X
@@ -333,6 +314,34 @@ function Nav() {
 }
 
 function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const videoRef = useRef(null);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsVideoMuted(videoRef.current.muted);
+    }
+  };
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (videoRef.current.paused) {
+        videoRef.current.play();
+        setIsVideoPlaying(true);
+      } else {
+        videoRef.current.pause();
+        setIsVideoPlaying(false);
+      }
+    }
+  };
+
+  const handleVideoLoad = () => {
+    if (videoRef.current) {
+      setIsVideoPlaying(!videoRef.current.paused);
+    }
+  };
 
   return (
     <section id="top" className="relative isolate pt-32 pb-20 overflow-hidden">
@@ -398,14 +407,16 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
           
           <div className="flex items-center justify-center lg:justify-end">
             <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 pointer-events-none" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
               <div className="relative">
                 <video
+                  ref={videoRef}
                   className="w-80 h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
-                  defaultMuted
+                  autoPlay
+                  muted={isVideoMuted}
                   loop
                   playsInline
-                  controls
+                  onLoadedData={handleVideoLoad}
                   style={{ aspectRatio: '9/16' }}
                 >
                   <source 
@@ -415,12 +426,52 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
                   Your browser does not support the video tag.
                 </video>
                 
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-              </div>
-              {/* Hover caption below video */}
-              <div className="mt-3 text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                <div className="text-sm font-semibold">Fawzi Issa Zaid</div>
-                <div className="text-xs text-neutral-300">The People United Will Never Be Defeated</div>
+                {/* Custom Video Controls */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between bg-black/60 backdrop-blur-sm rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {/* Play/Pause Button */}
+                  <button
+                    onClick={togglePlayPause}
+                    className="flex items-center justify-center w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full transition-all duration-200"
+                  >
+                    {isVideoPlaying ? (
+                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                      </svg>
+                    )}
+                  </button>
+
+                  {/* Mute/Unmute Button */}
+                  <button
+                    onClick={toggleMute}
+                    className="flex items-center justify-center w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full transition-all duration-200"
+                  >
+                    {isVideoMuted ? (
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                      </svg>
+                    )}
+                  </button>
+
+                  {/* Video Title */}
+                  <div className="text-white text-sm font-medium">
+                    Fawzi Issa Zaid
+                  </div>
+                </div>
+                
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="text-lg font-bold">Fawzi Issa Zaid</div>
+                  <div className="text-sm text-neutral-300">The People United Will Never Be Defeated</div>
+                </div>
               </div>
             </div>
           </div>
