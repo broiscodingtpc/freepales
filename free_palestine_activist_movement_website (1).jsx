@@ -175,11 +175,17 @@ export default function FreePalestineSite() {
         <div className="grid md:grid-cols-3 gap-12 items-start">
           <div className="group">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
-              <img
-                src={activist.headshot}
-                alt="Portrait of Fawzi Issa Zaid"
+              <video
+                src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeid4h5oldqjd2ys3zl35bldkqkl3dkkp5hhih2ggqbnzbbexnahia4"
+                controls
+                muted
+                loop
                 className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
-              />
+                poster={activist.headshot}
+                preload="metadata"
+              >
+                Your browser does not support the video tag.
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                 <div className="text-sm font-medium">Palestinian Activist</div>
@@ -200,6 +206,26 @@ export default function FreePalestineSite() {
                   {activist.cadence}
                 </span>
               </div>
+            </div>
+            <div className="bg-gradient-to-r from-emerald-900/20 to-neutral-900/50 backdrop-blur-sm rounded-2xl border border-emerald-500/30 p-6">
+              <p className="text-neutral-200 leading-relaxed text-lg mb-4">
+                My name is Fawzi Issa Zaid. I am one of the founders of Windsor 4 Palestine, and today I'm proud to introduce a new initiative: People for Palestine
+              </p>
+              <p className="text-neutral-200 leading-relaxed text-lg mb-4">
+                This movement was created with one goal to connect you directly to the people of Palestine. Not just through words or headlines, but through real action, real stories, and real lives.
+              </p>
+              <p className="text-neutral-200 leading-relaxed text-lg mb-4">
+                Through People for Palestine, we are raising donations that go directly to Palestinian families suffering under genocide both those still in Gaza and those who have fled with nothing left. These are families who have lost everything and are now starting from zero in unfamiliar countries, without resources or support. We are here to change that.
+              </p>
+              <p className="text-neutral-200 leading-relaxed text-lg mb-4">
+                Every dollar donated will be documented. Every act of giving will be videotaped and shared so you know where your support is going, who it's helping, and how it's changing lives. This isn't charity from a distance it's solidarity, face-to-face.
+              </p>
+              <p className="text-neutral-200 leading-relaxed text-lg mb-4">
+                We are working hand in hand with people on the ground. Your support will provide food, shelter, medicine, and essentials for survival. It will also give dignity to those rebuilding their lives in exile.
+              </p>
+              <p className="text-neutral-200 leading-relaxed text-lg font-semibold text-emerald-300">
+                This is not just a movement. It's a lifeline. From people, to people of Palestine.
+              </p>
             </div>
             <p className="text-neutral-200 leading-relaxed text-lg">{activist.summary}</p>
             <div className="grid sm:grid-cols-2 gap-4">
@@ -377,11 +403,17 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
             <div className="relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500" />
               <div className="relative">
-                <img
-                  src={activist.headshot}
-                  alt="Fawzi Issa Zaid"
+                <video
+                  src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeid4h5oldqjd2ys3zl35bldkqkl3dkkp5hhih2ggqbnzbbexnahia4"
+                  controls
+                  muted
+                  loop
                   className="w-80 h-80 object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
-                />
+                  poster={activist.headshot}
+                  preload="metadata"
+                >
+                  Your browser does not support the video tag.
+                </video>
                 <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute bottom-6 left-6 right-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <div className="text-lg font-bold">Fawzi Issa Zaid</div>
