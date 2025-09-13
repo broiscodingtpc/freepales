@@ -1,0 +1,5 @@
+[33me8935cf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Update original JSX file with latest changes
+[33m768ac43[m Move video to right side in phone canvas size, remove large video section
+[33mb72889b[m Fix videoRef error - move video state and handlers to Hero component
+[33mc1d9edd[m Add Fawzi video with autoplay and global click-to-unmute functionality
+[33m5d1275b[m Temporarily remove video to fix deployment - add placeholder for Fawzi video
