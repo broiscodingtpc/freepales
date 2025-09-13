@@ -176,7 +176,7 @@ export default function FreePalestineSite() {
           <div className="group">
             <div className="relative overflow-hidden rounded-3xl shadow-2xl">
               <video
-                src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeid4h5oldqjd2ys3zl35bldkqkl3dkkp5hhih2ggqbnzbbexnahia4"
+                src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeicpfncy75ngjgk3obz67kjubanepb4lailx2ovjh5p2e4ftvfnxiy"
                 controls
                 muted
                 loop
@@ -408,9 +408,11 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
                   controls
                   muted
                   loop
-                  className="w-80 h-80 object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
+                  playsInline
+                  className="w-80 h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
                   poster={activist.headshot}
                   preload="metadata"
+                  style={{ aspectRatio: '9/16' }}
                 >
                   Your browser does not support the video tag.
                 </video>
