@@ -178,10 +178,10 @@ export default function FreePalestineSite() {
           {/* Replace headshot with controlled video (no auto-unmute) */}
           <div className="relative group flex justify-center">
             <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 pointer-events-none" />
-            <div className="relative">
+            <div className="relative w-full sm:w-auto">
               <video
                 src="https://crimson-traditional-mastodon-846.mypinata.cloud/ipfs/bafybeid4h5oldqjd2ys3zl35bldkqkl3dkkp5hhih2ggqbnzbbexnahia4"
-                className="w-80 h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
+                className="w-full max-w-[22rem] sm:w-80 h-[70vh] sm:h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
                 poster={activist.headshot}
                 controls
                 muted
@@ -335,7 +335,7 @@ function Nav() {
 function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
 
   return (
-    <section id="top" className="relative isolate pt-32 pb-20 overflow-hidden">
+    <section id="top" className="relative isolate pt-28 md:pt-32 pb-12 md:pb-20 overflow-hidden">
       {/* Enhanced animated background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(16,185,129,0.2),transparent_50%)] animate-pulse" />
@@ -360,27 +360,27 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
       
       <div className="mx-auto max-w-7xl px-4">
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
+          <div className="space-y-6 md:space-y-8">
+            <div className="space-y-3 md:space-y-4">
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
                 <span className="bg-gradient-to-r from-white via-emerald-100 to-emerald-200 bg-clip-text text-transparent">
                   FREE PALESTINE
                 </span>
                 <br />
-                <span className="text-4xl md:text-5xl bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent">
+                <span className="text-3xl sm:text-4xl md:text-5xl bg-gradient-to-r from-red-400 to-red-300 bg-clip-text text-transparent">
                   — END THE GENOCIDE
                 </span>
               </h1>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-red-500 rounded-full" />
+              <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-emerald-500 to-red-500 rounded-full" />
             </div>
             
-            <p className="text-neutral-300 max-w-2xl text-xl leading-relaxed">
+            <p className="text-neutral-300 max-w-2xl text-base sm:text-lg md:text-xl leading-relaxed">
               Since 1948, Palestinians have faced displacement, occupation, and mass violence. We refuse silence.
               We organize, document, and send aid with transparency and care.
             </p>
             
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-3 sm:gap-4">
               <a href="#donate" className={BTN_PRIMARY}>
                 <span className="mr-2">💚</span>
                 Donate Now
@@ -396,12 +396,12 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
             </div>
           </div>
           
-          <div className="flex items-center justify-center lg:justify-end">
-            <div className="relative group">
+          <div className="flex items-center justify-center lg:justify-end order-first lg:order-last">
+            <div className="relative group w-full sm:w-auto">
               <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500/20 to-red-500/20 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 pointer-events-none" />
               <div className="relative">
                 <video
-                  className="w-80 h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
+                  className="w-full max-w-[22rem] sm:w-80 h-[70vh] sm:h-[500px] object-cover rounded-3xl shadow-2xl ring-2 ring-emerald-500/20 group-hover:ring-emerald-500/40 transition-all duration-500 group-hover:scale-105"
                   defaultMuted
                   loop
                   playsInline
