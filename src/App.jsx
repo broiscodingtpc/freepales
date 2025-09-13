@@ -15,6 +15,9 @@ export default function FreePalestineSite() {
     { chain: "SOL", address: "FTqhceb9mZ94GZg89idm81ZBV4q4TURCfXSL366Edn2K" },
   ];
 
+  // ==== PALESTINE Token Contract Address ====
+  const PALESTINE_TOKEN_CA = "Doa8tFTer7DpVrYgeLKtHD4xVJaydeFWTSrvsqnWpump";
+
   // ==== Links ====
   const TELEGRAM_LINK = "https://t.me/freepalestineproject"; // Movement Telegram (proof lives here)
   const IG_MOVEMENT = "https://www.instagram.com/windsor4palestine?igsh=bDE3aTRzdm82YTNi";
@@ -22,7 +25,7 @@ export default function FreePalestineSite() {
   const X_COMMUNITY = "https://x.com/i/communities/1965909075302273378";
   const X_OWNER = "https://x.com/Fawzi18936";
   const TIKTOK_LINK = "https://www.tiktok.com/@fawzizaid3?_t=ZS-8zch2pKBLPg&_r=1";
-  const PUMPFUN_STREAM_URL = "https://pump.fun/coin/EXAMPLE"; // Replace with actual coin/stream page
+  const PUMPFUN_STREAM_URL = "https://pump.fun/coin/Doa8tFTer7DpVrYgeLKtHD4xVJaydeFWTSrvsqnWpump"; // People For Palestine Stream (PALESTINE)
 
   const pressLinks = [
     {
@@ -170,6 +173,52 @@ export default function FreePalestineSite() {
             </div>
           </div>
         ))}
+
+        {/* PALESTINE Token Contract Address */}
+        <div className="group mt-8 rounded-3xl border border-red-500/20 p-8 bg-gradient-to-br from-neutral-900/80 to-neutral-800/40 backdrop-blur-sm shadow-2xl hover:shadow-red-500/20 transition-all duration-500 hover:scale-[1.02] hover:border-red-500/40">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-500 to-red-400 flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-lg">🇵</span>
+              </div>
+              <h3 className="text-xl font-bold bg-gradient-to-r from-white to-neutral-300 bg-clip-text text-transparent">PALESTINE Token Contract</h3>
+            </div>
+            <span className="text-xs text-red-400 font-medium bg-red-500/10 px-3 py-1 rounded-full">Click to copy or view on pump.fun</span>
+          </div>
+          <div className="relative">
+            <p className="break-all text-sm text-neutral-300 font-mono bg-neutral-800/50 p-4 rounded-xl border border-neutral-700" aria-live="polite">
+              {PALESTINE_TOKEN_CA}
+            </p>
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button 
+              onClick={() => copy(PALESTINE_TOKEN_CA, 'PALESTINE')} 
+              className={`${BTN_PRIMARY} ${copied === 'PALESTINE' ? 'animate-pulse' : ''}`} 
+              aria-label="Copy PALESTINE token contract address"
+            >
+              {copied === 'PALESTINE' ? "✓ Copied!" : "Copy Contract Address"}
+            </button>
+            <a
+              href={PUMPFUN_STREAM_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white font-semibold shadow-lg hover:shadow-red-500/25 transform hover:scale-105 transition-all duration-300 ease-out"
+              aria-label="View PALESTINE token on pump.fun"
+            >
+              View on pump.fun
+            </a>
+            <a
+              href={`https://explorer.solana.com/address/${PALESTINE_TOKEN_CA}`}
+              target="_blank"
+              rel="noreferrer"
+              className={BTN_SUBTLE}
+              aria-label="Open PALESTINE token on Solana Explorer"
+            >
+              View on Solana Explorer
+            </a>
+          </div>
+        </div>
       </Section>
 
       {/* Enhanced About Fawzi */}
@@ -244,7 +293,7 @@ export default function FreePalestineSite() {
           <LinkButton href={IG_MOVEMENT} label="Movement Instagram" />
           <LinkButton href={IG_OWNER} label="Fawzi's Instagram" />
           <LinkButton href={TIKTOK_LINK} label="TikTok Account" />
-          <LinkButton href={PUMPFUN_STREAM_URL} label="Watch Protest Livestreams" kind="ghost" />
+          <LinkButton href={PUMPFUN_STREAM_URL} label="PALESTINE Token Live Stream" kind="ghost" />
         </div>
       </Section>
 
@@ -386,8 +435,8 @@ function Hero({ activist, pumpUrl, BTN_PRIMARY, BTN_SUBTLE, BTN_GHOST }) {
                 Donate Now
               </a>
               <a href={pumpUrl} target="_blank" rel="noreferrer" className={BTN_SUBTLE}>
-                <span className="mr-2">📺</span>
-                Watch Livestreams
+                <span className="mr-2">🇵</span>
+                PALESTINE Token Live
               </a>
               <a href="#links" className={BTN_GHOST}>
                 <span className="mr-2">🔗</span>
