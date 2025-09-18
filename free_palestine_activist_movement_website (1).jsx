@@ -16,7 +16,7 @@ export default function FreePalestineSite() {
 
   // ==== Links ====
   const TELEGRAM_LINK = "https://t.me/freepalestineproject"; // Movement Telegram (proof lives here)
-  const IG_MOVEMENT = "https://www.instagram.com/windsor4palestine?igsh=bDE3aTRzdm82YTNi";
+  const IG_MOVEMENT = "";
   const IG_OWNER = "https://www.instagram.com/fawzizaid.palestine?igsh=NjdtYXY0bTdrYnd2";
   const X_COMMUNITY = "https://x.com/i/communities/1965909075302273378";
   const X_OWNER = "https://x.com/Fawzi18936";
